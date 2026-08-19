@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20.x, 22.x]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install (no lockfile required)
+        run: npm install
+
+      - name: Test
+        run: npm test
+
+      - name: Validate
+        run: npm run validate
+
+      - name: Doctor
+        run: npm run doctor
+
+      - name: Export
+        run: npm run export
+
+      - name: Check no secrets committed
+        run: |
+          if grep -rE "(sk-[a-zA-Z0-9]{20,}|sk-ant-|xai-[a-zA-Z0-9]{20,}|ghp_[a-zA-Z0-9]{20,}|api_key\s*=\s*['\"][^'\"]+['\"])" --include="*.js" --include="*.md" --include="*.json" --exclude-dir=node_modules --exclude-dir=.git .; then
+            echo "❌ Possível segredo detectado nos arquivos"
+            exit 1
+          fi
+          echo "✅ Nenhum segredo óbvio encontrado"
