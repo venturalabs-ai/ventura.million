@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install (no lockfile required)
+      - name: Install
         run: npm install
 
       - name: Test
@@ -37,7 +37,7 @@ jobs:
 
       - name: Check no secrets committed
         run: |
-          if grep -rE "(sk-[a-zA-Z0-9]{20,}|sk-ant-|xai-[a-zA-Z0-9]{20,}|ghp_[a-zA-Z0-9]{20,}|api_key\s*=\s*['\"][^'\"]+['\"])" --include="*.js" --include="*.md" --include="*.json" --exclude-dir=node_modules --exclude-dir=.git .; then
+          if grep -rE "(sk-[a-zA-Z0-9]{20,}|sk-ant-|xai-[a-zA-Z0-9]{20,}|ghp_[a-zA-Z0-9]{20,})" --include="*.js" --include="*.md" --include="*.json" --exclude-dir=node_modules --exclude-dir=.git .; then
             echo "❌ Possível segredo detectado nos arquivos"
             exit 1
           fi

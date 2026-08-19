@@ -1,0 +1,60 @@
+name: Qualidade e Segurança
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint-and-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+
+      - name: Install
+        run: npm install
+
+      - name: Validação do projeto
+        run: npm run validate
+
+      - name: Execução de todos os testes
+        run: npm test
+
+      - name: Diagnóstico de integridade
+        run: npm run doctor
+
+      - name: Geração de pacote portátil
+        run: npm run export
+
+      - name: Verificação de segredos e chaves
+        run: |
+          echo "Procurando padrões de chaves e tokens..."
+          if grep -rE "(sk-[a-zA-Z0-9]{20,}|sk-ant-|xai-[A-Za-z0-9]{20,}|ghp_[a-zA-Z0-9]{20,}|gho_|glpat-)" --include="*.js" --include="*.md" --include="*.json" --include="*.yml" --include="*.yaml" --exclude-dir=node_modules --exclude-dir=.git .; then
+            echo "❌ POSSÍVEL SEGREDO DETECTADO NOS ARQUIVOS COMMITADOS"
+            exit 1
+          fi
+          echo "✅ Nenhum segredo encontrado"
+
+      - name: Verificação de referências proibidas
+        run: |
+          echo "Procurando referências proibidas..."
+          if grep -rEi "(viralium|BrandingViraliumGroup)" --include="*.js" --include="*.md" --include="*.json" --include="*.yml" --exclude-dir=node_modules --exclude-dir=.git .; then
+            echo "❌ REFERÊNCIA PROIBIDA DETECTADA"
+            exit 1
+          fi
+          echo "✅ Sem referências proibidas"
+
+      - name: Verificação de caminhos absolutos no pacote
+        run: |
+          echo "Verificando caminhos absolutos..."
+          if [ -f dist/ventura-agent-package.json ]; then
+            if grep -E "(/home/|/Users/|C:\\\\|/mnt/)" dist/ventura-agent-package.json; then
+              echo "❌ CAMINHO ABSOLUTO DETECTADO NO PACOTE GERADO"
+              exit 1
+            fi
+          fi
+          echo "✅ Sem caminhos absolutos"

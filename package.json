@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": false,
   "type": "module",
-  "description": "Framework portátil local-first para criar, testar, executar, validar e exportar agentes e skills de IA — sem login obrigatório",
+  "description": "Framework local-first para criar, testar, executar, validar e exportar agentes e skills de IA — sem login obrigatório",
   "main": "src/cli/index.js",
   "bin": {
     "ventura": "src/cli/index.js"
@@ -19,19 +19,30 @@
     "export": "node src/cli/index.js export --format json",
     "list": "node src/cli/index.js list"
   },
-  "keywords": [
-    "agents",
-    "ai",
-    "framework",
-    "portable",
-    "local-first",
-    "skills",
-    "opencode"
-  ],
-  "author": "venturalabs-ai",
-  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/venturalabs-ai/ventura.million.git"
-  }
+    "url": "git+https://github.com/venturalabs-ai/ventura.million.git"
+  },
+  "keywords": [
+    "ai-agents",
+    "llm",
+    "agent-framework",
+    "portable",
+    "local-first",
+    "claude",
+    "chatgpt",
+    "grok",
+    "copilot",
+    "gemini",
+    "mistral",
+    "perplexity",
+    "deepseek",
+    "qwen"
+  ],
+  "author": "Ventura Labs AI",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/venturalabs-ai/ventura.million/issues"
+  },
+  "homepage": "https://github.com/venturalabs-ai/ventura.million#readme"
 }

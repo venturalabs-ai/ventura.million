@@ -1,15 +1,39 @@
+# Node.js
 node_modules/
-dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+yarn.lock
+
+# Ambiente local
 .env
+.env.local
+.env.*.local
 .env.*
 !.env.example
-*.log
-.DS_Store
+
+# Artefatos gerados
+dist/
 tmp/
+temp/
+*.tmp
+*.log
 .ventura/
-coverage/
-*.tsbuildinfo
-.idea/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# IDEs
 .vscode/
+.idea/
 *.swp
 *.swo
+*~
+*.code-workspace
+
+# Testes e cobertura
+coverage/
+.nyc_output/
+*.tsbuildinfo
