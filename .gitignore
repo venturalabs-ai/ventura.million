@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+tmp/
+.ventura/
+coverage/
+*.tsbuildinfo
+.idea/
+.vscode/
+*.swp
+*.swo

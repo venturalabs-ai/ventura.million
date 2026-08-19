@@ -1,0 +1,37 @@
+{
+  "name": "ventura.million",
+  "version": "1.0.0",
+  "private": false,
+  "type": "module",
+  "description": "Framework portátil local-first para criar, testar, executar, validar e exportar agentes e skills de IA — sem login obrigatório",
+  "main": "src/cli/index.js",
+  "bin": {
+    "ventura": "src/cli/index.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "start": "node src/cli/index.js run",
+    "test": "node --test tests/*.test.js",
+    "validate": "node src/cli/index.js validate",
+    "doctor": "node src/cli/index.js doctor",
+    "export": "node src/cli/index.js export --format json",
+    "list": "node src/cli/index.js list"
+  },
+  "keywords": [
+    "agents",
+    "ai",
+    "framework",
+    "portable",
+    "local-first",
+    "skills",
+    "opencode"
+  ],
+  "author": "venturalabs-ai",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/venturalabs-ai/ventura.million.git"
+  }
+}
