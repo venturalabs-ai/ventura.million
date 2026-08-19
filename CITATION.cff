@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "Se você usar este software, cite-o conforme abaixo."
+authors:
+  - family-names: Mota de Oliveira
+    given-names: Wemerson
+    affiliation: Ventura Labs AI
+title: "ventura.million — Framework Portátil de Agentes de IA"
+version: 1.0.0
+date-released: 2026-08-19
+url: "https://github.com/venturalabs-ai/ventura.million"
+license: MIT
+keywords:
+  - ai-agents
+  - llm
+  - agent-framework
+  - portable
+  - local-first
+  - claude
+  - chatgpt
+  - grok
+  - copilot
+  - gemini
+  - mistral
+  - perplexity
+  - deepseek
+  - qwen
