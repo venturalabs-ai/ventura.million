@@ -61,7 +61,12 @@ export function route(prompt, agents, skills = []) {
       agent,
       score: scoreMatch(prompt, agent)
     }))
-    .sort((a, b) => b.score - a.score);
+    .sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      if (a.agent.id === 'orchestrator') return -1;
+      if (b.agent.id === 'orchestrator') return 1;
+      return String(a.agent.id).localeCompare(String(b.agent.id));
+    });
 
   const best = scored[0];
 
