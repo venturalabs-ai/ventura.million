@@ -8,8 +8,9 @@
 
 **Framework local-first para criar, testar, executar, validar e exportar agentes e skills de IA.**
 
-> ✅ **Funciona sem cadastro, sem senha, sem banco de dados, sem servidor externo.**  
-> Runtime 100% local — zero dependências de rede obrigatórias.
+> **Local-first by design:** offline execution, no mandatory authentication, no database, and no external server dependency.
+>
+> Built for portable, auditable agent workflows — third-party AI APIs remain optional.
 
 ---
 
@@ -34,7 +35,7 @@
 
 | | |
 |---|---|
-| 🏠 **Local-first** | Sem cadastro, sem senha, sem banco, sem servidor externo |
+| 🏠 **Local-first** | Offline runtime — no mandatory auth, database, or external server |
 | 🧠 **Roteamento determinístico** | Seleciona agente/skill por pontuação — sem chamada a LLM |
 | 📦 **Export portátil** | Pacote JSON `ventura-agent-package/v1` |
 | 🔌 **10 adaptadores** | Claude, ChatGPT, Grok, Copilot, Gemini, Mistral, Perplexity, DeepSeek, Qwen, Genérico |
