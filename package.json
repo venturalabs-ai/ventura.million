@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "node src/cli/index.js run",
-    "test": "node --test tests/*.test.js",
+    "test": "node --test tests/frontmatter.test.js tests/router.test.js tests/runtime.test.js tests/exporter.test.js tests/validator.test.js",
     "validate": "node src/cli/index.js validate",
     "doctor": "node src/cli/index.js doctor",
     "export": "node src/cli/index.js export --format json",
